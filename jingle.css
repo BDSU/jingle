@@ -102,9 +102,27 @@ body {
 	transform-style: preserve-3d;
 }
 
-.container span {
+.text,
+.text-shadow {
+	position: absolute;
+	width: 100%;
+}
+
+.text-shadow {
+	color: #000;
+	filter: blur(calc(2*var(--logo-scale)));
+	opacity: 0.5;
+	transform: initial;
+}
+
+.text span {
 	display: inline-block;
 	transform: translateZ(calc(var(--vol-range) * var(--logo-scale) * var(--distance-factor)));
+}
+
+.text-shadow span {
+	display: inline-block;
+	transform: scale(calc(1 - 1/250 * var(--vol-range) * var(--distance-factor)));
 }
 
 .container span:nth-child(1) {
