@@ -22,6 +22,19 @@ function init() {
 		audioElement.src = fileUrl;
 	});
 
+	// attach listener to dragover to make body a drop zone
+	document.body.addEventListener('dragover', event => event.preventDefault());
+	document.body.addEventListener('drop', event => {
+		if (!event.dataTransfer.files || !event.dataTransfer.files.length) {
+			return;
+		}
+
+		event.preventDefault();
+
+		const fileUrl = URL.createObjectURL(event.dataTransfer.files[0]);
+		audioElement.src = fileUrl;
+	});
+
 	document.body.addEventListener('keypress', event => {
 		if (event.code === 'Space') {
 			if (audioElement.paused) {
