@@ -2,6 +2,7 @@ let audioAnalyser;
 let audioContext;
 let audioElement;
 let logoElement;
+let fileInputElement;
 
 window.addEventListener('load', init);
 
@@ -10,6 +11,16 @@ function init() {
 
 	audioElement = document.querySelector('audio');
 	audioElement.addEventListener('play', initAudio);
+
+	fileInputElement = document.querySelector('input[type=file]');
+	fileInputElement.addEventListener('change', event => {
+		if (!fileInputElement.files || !fileInputElement.files.length) {
+			return;
+		}
+
+		const fileUrl = URL.createObjectURL(fileInputElement.files[0]);
+		audioElement.src = fileUrl;
+	});
 
 	document.body.addEventListener('keypress', event => {
 		if (event.code === 'Space') {
