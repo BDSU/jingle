@@ -28,6 +28,7 @@ body {
 
 .tile {
 	position: absolute;
+	transform: scale(calc(1 + var(--vol)/600));
 }
 
 /* Logo Boxes */
