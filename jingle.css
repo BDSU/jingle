@@ -79,3 +79,14 @@ body {
 	letter-spacing: calc(-8 * var(--logo-scale));
 	text-align: center;
 }
+
+/* Controls */
+.controls {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+}
+
+.controls audio {
+	width: 100%;
+}
