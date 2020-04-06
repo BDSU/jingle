@@ -55,12 +55,22 @@ function processVolume() {
 	const frequenceData =  new Uint8Array(audioAnalyser.frequencyBinCount);
 	audioAnalyser.getByteFrequencyData(frequenceData);
 
-	let vol = getAverageVolume(frequenceData);
+	const ranges = [
+		{name: 'vol', start: 0, end: 512},
+		{name: 'vol-range1', start:   0, end: 128},
+		{name: 'vol-range2', start: 128, end: 256},
+		{name: 'vol-range3', start: 256, end: 364},
+		{name: 'vol-range4', start: 364, end: 512},
+	];
+	ranges.forEach(range => {
+		const rangeData = frequenceData.slice(range.start, range.end);
+		let vol = getAverageVolume(rangeData);
 
-	// enforce a minimal value of 0.01 to prevent overlapping artifacts
-	vol = Math.max(vol, 0.01);
+		// enforce a minimal value of 0.01 to prevent overlapping artifacts
+		vol = Math.max(vol, 0.01);
 
-	logoElement.style.setProperty('--vol', vol);
+		logoElement.style.setProperty(`--${range.name}`, vol);
+	});
 
 	requestAnimationFrame(processVolume);
 }
