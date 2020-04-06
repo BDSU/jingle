@@ -1,0 +1,74 @@
+html, body {
+	padding: 0;
+	margin: 0;
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	background: #000;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.logo {
+	height: 205px;
+	width: 400px;
+	position: relative;
+}
+
+.tile {
+	position: absolute;
+}
+
+/* Logo Boxes */
+.bottom {
+	top: 177px;
+	left: 34px;
+	width: 218px;
+	height: 28px;
+	background: #9bd41f;
+}
+
+.top-right {
+	top: 0;
+	left: 206px;
+	width: 126px;
+	height: 65px;
+	background: #79cd60;
+}
+
+.top-left {
+	top: 28px;
+	left: 68px;
+	width: 138px;
+	height: 37px;
+	background: #82cd28;
+}
+
+.top-intersect {
+	top: 28px;
+	left: 206px;
+	width: 46px;
+	height: 37px;
+	background: #c4e014;
+}
+
+.container {
+	top: 65px;
+	left: 0;
+	width: 400px;
+	height: 112px;
+	background: #53be37;
+}
+
+/* Text-Formatierung */
+.container {
+	color: #fff;
+	font-family: Helvetica, sans-serif;
+	font-size: 112px;
+	line-height: 114px;
+	letter-spacing: -8px;
+	text-align: center;
+}
