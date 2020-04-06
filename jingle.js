@@ -10,6 +10,20 @@ function init() {
 
 	audioElement = document.querySelector('audio');
 	audioElement.addEventListener('play', initAudio);
+
+	document.body.addEventListener('keypress', event => {
+		if (event.code === 'Space') {
+			if (audioElement.paused) {
+				audioElement.play();
+			} else {
+				audioElement.pause();
+			}
+		}
+	});
+	// stop propagation when focus is on the audio controls
+	// otherwise pressing space could trigger the above toggle
+	// *and* play/pause via the controls
+	document.querySelector('.controls').addEventListener('keypress', event => event.stopPropagation());
 }
 
 function initAudio() {
