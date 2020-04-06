@@ -11,6 +11,8 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	perspective: calc(500 * var(--logo-scale));
+	transform-style: preserve-3d;
 	--logo-scale: 0.15vw;
 }
 
@@ -28,7 +30,7 @@ body {
 
 .tile {
 	position: absolute;
-	transform: scale(calc(1 + var(--vol)/600));
+	transform: translateZ(calc(var(--vol) * var(--logo-scale)));
 }
 
 /* Logo Boxes */
