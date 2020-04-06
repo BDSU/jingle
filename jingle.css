@@ -42,10 +42,10 @@ body {
 
 /* Logo Boxes */
 .bottom {
-	top: calc(177 * var(--logo-scale));
+	top: calc(149 * var(--logo-scale));
 	left: calc(34 * var(--logo-scale));
 	width: calc(218 * var(--logo-scale));
-	height: calc(28 * var(--logo-scale));
+	height: calc(56 * var(--logo-scale));
 	background: #9bd41f;
 	--distance-factor: -0.2;
 }
@@ -54,7 +54,7 @@ body {
 	top: 0;
 	left: calc(206 * var(--logo-scale));
 	width: calc(126 * var(--logo-scale));
-	height: calc(65 * var(--logo-scale));
+	height: calc(102 * var(--logo-scale));
 	background: #79cd60;
 	--distance-factor: -0.3;
 }
@@ -63,7 +63,7 @@ body {
 	top: calc(28 * var(--logo-scale));
 	left: calc(68 * var(--logo-scale));
 	width: calc(138 * var(--logo-scale));
-	height: calc(37 * var(--logo-scale));
+	height: calc(74 * var(--logo-scale));
 	background: #82cd28;
 	--distance-factor: -0.1;
 }
@@ -72,7 +72,7 @@ body {
 	top: calc(28 * var(--logo-scale));
 	left: calc(206 * var(--logo-scale));
 	width: calc(46 * var(--logo-scale));
-	height: calc(37 * var(--logo-scale));
+	height: calc(74 * var(--logo-scale));
 	background: #c4e014;
 	--distance-factor: -0.05;
 }
