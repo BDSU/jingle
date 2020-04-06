@@ -25,10 +25,19 @@ function init() {
 	// *and* play/pause via the controls
 	document.querySelector('.controls').addEventListener('keypress', event => event.stopPropagation());
 
+	let mouseLastUpdate = 0;
 	document.body.addEventListener('mousemove', event => {
+		mouseLastUpdate = Date.now();
+		document.body.classList.remove('idle');
 		logoElement.style.setProperty('--rotateX', 45 * (1 - 2 * event.pageY/document.body.offsetHeight));
 		logoElement.style.setProperty('--rotateY', 45 * (1 - 2 * event.pageX/document.body.offsetWidth));
 	});
+
+	setInterval(() => {
+		if (Date.now() - mouseLastUpdate > 1000) {
+			document.body.classList.add('idle');
+		}
+	}, 1000);
 
 	window.addEventListener('hashchange', updateFeatureClasses);
 	updateFeatureClasses();

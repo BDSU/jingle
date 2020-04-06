@@ -34,6 +34,11 @@ body {
 		rotateX(calc(var(--rotateX) *  1deg));
 }
 
+.idle .logo {
+	transform: initial;
+	transition: transform 3s;
+}
+
 .tile {
 	position: absolute;
 	transform: translateZ(calc(var(--vol-range) * var(--logo-scale) * var(--distance-factor)));
