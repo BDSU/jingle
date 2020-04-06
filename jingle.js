@@ -15,6 +15,10 @@ function init() {
 function initAudio() {
 	audioElement.removeEventListener('play', initAudio);
 
+	if (!window.AudioContext) {
+		// Safari implements AudioContext with 'webkit' prefix
+		window.AudioContext = window.webkitAudioContext;
+	}
 	audioContext = new AudioContext();
 
 	audioAnalyser = audioContext.createAnalyser();
