@@ -147,32 +147,106 @@ body {
 	display: none;
 }
 
-.text span {
+.container span {
 	display: inline-block;
-	transform: translateZ(calc(var(--vol-range) * var(--logo-scale) * var(--distance-factor)));
+	animation: wave 2s infinite alternate;
+	--wave-factor: 1;
+}
+
+.text span {
+	transform: translateZ(calc(var(--vol-range) * var(--logo-scale) * var(--distance-factor) * var(--wave-factor)));
 }
 
 .text-shadow span {
-	display: inline-block;
-	transform: scale(calc(1 - 1/250 * var(--vol-range) * var(--distance-factor)));
+	transform: scale(calc(1 - 1/250 * var(--vol-range) * var(--distance-factor) * var(--wave-factor)));
+}
+
+@keyframes wave {
+	0% {
+		--wave-factor: 1;
+	}
+	5% {
+		--wave-factor: 1.2;
+	}
+	10% {
+		--wave-factor: 1.4;
+	}
+	15% {
+		--wave-factor: 1.6;
+	}
+	20% {
+		--wave-factor: 1.8;
+	}
+	25% {
+		--wave-factor: 2;
+	}
+	30% {
+		--wave-factor: 2.2;
+	}
+	35% {
+		--wave-factor: 2.4;
+	}
+	40% {
+		--wave-factor: 2.6;
+	}
+	45% {
+		--wave-factor: 2.8;
+	}
+	50% {
+		--wave-factor: 3;
+	}
+	55% {
+		--wave-factor: 3.2;
+	}
+	60% {
+		--wave-factor: 3.4;
+	}
+	65% {
+		--wave-factor: 3.6;
+	}
+	70% {
+		--wave-factor: 3.8;
+	}
+	75% {
+		--wave-factor: 4;
+	}
+	80% {
+		--wave-factor: 4.2;
+	}
+	85% {
+		--wave-factor: 4.4;
+	}
+	90% {
+		--wave-factor: 4.6;
+	}
+	95% {
+		--wave-factor: 4.8;
+	}
+	100% {
+		--wave-factor: 5;
+	}
 }
 
 .container span:nth-child(1) {
+	animation-delay: 0s;
 	--vol-range: var(--vol-range1);
 	--distance-factor: 0.1;
 }
 
 .container span:nth-child(2) {
+	animation-delay: 2s;
 	--vol-range: var(--vol-range3);
 	--distance-factor: 0.3;
 }
 
 .container span:nth-child(3) {
+	animation-delay: 1s;
 	--vol-range: var(--vol-range2);
 	--distance-factor: 0.2;
 }
 
 .container span:nth-child(4) {
+	animation-delay: 3s;
 	--vol-range: var(--vol-range1);
 	--distance-factor: 0.1;
 }
