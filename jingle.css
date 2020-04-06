@@ -26,6 +26,12 @@ body {
 	height: calc(205 * var(--logo-scale));
 	width: calc(400 * var(--logo-scale));
 	position: relative;
+	--rotateX: 0;
+	--rotateY: 0;
+	transform-style: preserve-3d;
+	transform:
+		rotateY(calc(var(--rotateY) * -1deg))
+		rotateX(calc(var(--rotateX) *  1deg));
 }
 
 .tile {

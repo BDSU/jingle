@@ -24,6 +24,11 @@ function init() {
 	// otherwise pressing space could trigger the above toggle
 	// *and* play/pause via the controls
 	document.querySelector('.controls').addEventListener('keypress', event => event.stopPropagation());
+
+	document.body.addEventListener('mousemove', event => {
+		logoElement.style.setProperty('--rotateX', 45 * (1 - 2 * event.pageY/document.body.offsetHeight));
+		logoElement.style.setProperty('--rotateY', 45 * (1 - 2 * event.pageX/document.body.offsetWidth));
+	});
 }
 
 function initAudio() {
