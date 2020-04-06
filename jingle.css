@@ -99,6 +99,32 @@ body {
 	line-height: calc(114 * var(--logo-scale));
 	letter-spacing: calc(-8 * var(--logo-scale));
 	text-align: center;
+	transform-style: preserve-3d;
+}
+
+.container span {
+	display: inline-block;
+	transform: translateZ(calc(var(--vol-range) * var(--logo-scale) * var(--distance-factor)));
+}
+
+.container span:nth-child(1) {
+	--vol-range: var(--vol-range1);
+	--distance-factor: 0.1;
+}
+
+.container span:nth-child(2) {
+	--vol-range: var(--vol-range3);
+	--distance-factor: 0.3;
+}
+
+.container span:nth-child(3) {
+	--vol-range: var(--vol-range2);
+	--distance-factor: 0.2;
+}
+
+.container span:nth-child(4) {
+	--vol-range: var(--vol-range1);
+	--distance-factor: 0.1;
 }
 
 /* Controls */
