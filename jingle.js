@@ -29,6 +29,19 @@ function init() {
 		logoElement.style.setProperty('--rotateX', 45 * (1 - 2 * event.pageY/document.body.offsetHeight));
 		logoElement.style.setProperty('--rotateY', 45 * (1 - 2 * event.pageX/document.body.offsetWidth));
 	});
+
+	window.addEventListener('hashchange', updateFeatureClasses);
+	updateFeatureClasses();
+}
+
+function updateFeatureClasses() {
+	['no-shadow', 'no-blur'].forEach(className => {
+		if (location.hash.indexOf(className) !== -1) {
+			document.body.classList.add(className);
+		} else {
+			document.body.classList.remove(className);
+		}
+	});
 }
 
 function initAudio() {

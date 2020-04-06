@@ -115,6 +115,14 @@ body {
 	transform: initial;
 }
 
+.no-blur .text-shadow {
+	filter: initial;
+}
+
+.no-shadow .text-shadow {
+	display: none;
+}
+
 .text span {
 	display: inline-block;
 	transform: translateZ(calc(var(--vol-range) * var(--logo-scale) * var(--distance-factor)));
