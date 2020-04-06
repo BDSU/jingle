@@ -55,7 +55,11 @@ function processVolume() {
 	const frequenceData =  new Uint8Array(audioAnalyser.frequencyBinCount);
 	audioAnalyser.getByteFrequencyData(frequenceData);
 
-	const vol = getAverageVolume(frequenceData);
+	let vol = getAverageVolume(frequenceData);
+
+	// enforce a minimal value of 0.01 to prevent overlapping artifacts
+	vol = Math.max(vol, 0.01);
+
 	logoElement.style.setProperty('--vol', vol);
 
 	requestAnimationFrame(processVolume);
