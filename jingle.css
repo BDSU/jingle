@@ -35,8 +35,27 @@ body {
 }
 
 .idle .logo {
-	transform: initial;
-	transition: transform 3s;
+	animation: wobble 30s 10s infinite ease-in-out alternate;
+	transform: rotateY(-10deg) rotateX(20deg) rotateZ(0);
+	transition: transform 10s;
+}
+
+@keyframes wobble {
+	0% {
+		transform: rotateY(-10deg) rotateX(20deg);
+	}
+	25% {
+		transform: rotateY(10deg) rotateX(10deg);
+	}
+	50% {
+		transform: rotateY(-10deg) rotateX(0deg);
+	}
+	75% {
+		transform: rotateY(10deg) rotateX(-10deg);
+	}
+	100% {
+		transform: rotateY(-10deg) rotateX(-20deg);
+	}
 }
 
 .tile {
