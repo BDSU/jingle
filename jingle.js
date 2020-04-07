@@ -107,6 +107,18 @@ function init() {
 		logoElement.style.setProperty('--rotateZ', event.alpha);
 	});
 
+	if (window.screen && screen.orientation) {
+		screen.orientation.addEventListener('change', event => {
+			logoElement.style.setProperty('--screenOrientation', event.target.angle);
+		});
+		logoElement.style.setProperty('--screenOrientation', screen.orientation.angle);
+	} else if ('orientation' in window){
+		window.onorientationchange = () => {
+			logoElement.style.setProperty('--screenOrientation', window.orientation);
+		};
+		logoElement.style.setProperty('--screenOrientation', window.orientation);
+	}
+
 	window.addEventListener('hashchange', updateFeatureClasses);
 	updateFeatureClasses();
 }

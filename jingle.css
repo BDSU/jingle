@@ -36,7 +36,9 @@ body {
 
 .mobile .logo {
 	--rotateZ: 0;
+	--screenOrientation: 0;
 	transform:
+		rotateZ(calc(var(--screenOrientation) * -1deg))
 		rotateY(calc(var(--rotateY) * -1deg))
 		rotateX(calc(var(--rotateX) *  1deg))
 		rotateZ(calc(var(--rotateZ) *  1deg))
