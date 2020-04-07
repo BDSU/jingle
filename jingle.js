@@ -87,7 +87,15 @@ function init() {
 	// *and* play/pause via the controls
 	document.querySelector('.controls').addEventListener('keypress', event => event.stopPropagation());
 
-	document.body.addEventListener('click', event => document.body.requestFullscreen());
+	document.body.addEventListener('click', event => {
+		document.body.requestFullscreen();
+
+		if (audioElement.paused) {
+			audioElement.play();
+		} else {
+			audioElement.pause();
+		}
+	});
 	// stop propagation when clicking on controls, see above
 	document.querySelector('.controls').addEventListener('click', event => event.stopPropagation());
 
