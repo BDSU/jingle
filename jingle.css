@@ -271,3 +271,9 @@ body {
 .controls audio {
 	width: 100%;
 }
+
+.controls label {
+	background: #fff;
+	cursor: pointer;
+	padding: 5px;
+}

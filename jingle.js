@@ -35,6 +35,36 @@ function init() {
 		audioElement.src = fileUrl;
 	});
 
+	if (navigator.mediaDevices.getUserMedia) {
+		const micCheckbox = document.querySelector('input[name=mic]');
+		micCheckbox.disabled = false;
+
+		let micSourceNode;
+		micCheckbox.addEventListener('change',  event => {
+			if (!audioContext) {
+				initAudio();
+			}
+
+			if (micCheckbox.checked) {
+				navigator.mediaDevices.getUserMedia({audio: true})
+					.then(stream => {
+						micSourceNode = audioContext.createMediaStreamSource(stream);
+						micSourceNode.connect(audioAnalyser);
+					})
+					.catch(error => {
+						micCheckbox.checked = false;
+						micCheckbox.disabled = true;
+						console.warn(error);
+					});
+			} else {
+				// stop all input tracks so mic is freed and can be closed again
+				micSourceNode.mediaStream.getTracks().forEach(track => track.stop());
+				micSourceNode.disconnect();
+				micSourceNode = null;
+			}
+		});
+	}
+
 	document.body.addEventListener('keypress', event => {
 		if (event.code === 'Space') {
 			if (audioElement.paused) {
