@@ -11,8 +11,6 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	perspective: calc(500 * var(--logo-scale));
-	transform-style: preserve-3d;
 	--logo-scale: 0.15vw;
 }
 
@@ -22,8 +20,45 @@ body {
 	}
 }
 
+body.vr {
+	--logo-scale: 0.075vw;
+}
+
+@media (min-aspect-ratio: 8/3) {
+	body.vr {
+		--logo-scale: 0.2vh;
+	}
+}
+
 body:fullscreen {
 	cursor: none;
+}
+
+.logo-container {
+	perspective: calc(500 * var(--logo-scale));
+	transform-style: preserve-3d;
+}
+
+.vr .logo-container {
+	perspective: calc(800 * var(--logo-scale));
+	width: 40%;
+	display: flex;
+	justify-content: center;
+	--eyeOffset: 10%;
+}
+
+.logo-container.right {
+	display: none;
+}
+
+.vr .logo-container.left {
+	perspective-origin: calc(50% - var(--eyeOffset));
+}
+
+.vr .logo-container.right {
+	display: flex;
+	justify-content: center;
+	perspective-origin: calc(50% + var(--eyeOffset));
 }
 
 .logo {

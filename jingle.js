@@ -152,7 +152,7 @@ function setLogoProperty(prop, value) {
 }
 
 function updateFeatureClasses() {
-	['no-shadow', 'no-blur'].forEach(className => {
+	['no-shadow', 'no-blur', 'vr'].forEach(className => {
 		if (location.hash.indexOf(className) !== -1) {
 			document.body.classList.add(className);
 		} else {
