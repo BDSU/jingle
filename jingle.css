@@ -22,6 +22,10 @@ body {
 	}
 }
 
+body:fullscreen {
+	cursor: none;
+}
+
 .logo {
 	height: calc(205 * var(--logo-scale));
 	width: calc(400 * var(--logo-scale));
@@ -265,6 +269,7 @@ body {
 
 /* Controls */
 .controls {
+	cursor: initial;
 	position: fixed;
 	bottom: 0;
 	width: 100%;
