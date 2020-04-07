@@ -91,6 +91,10 @@ function init() {
 	// stop propagation when clicking on controls, see above
 	document.querySelector('.controls').addEventListener('click', event => event.stopPropagation());
 
+	document.querySelector('input[name=loop]').addEventListener('change', event => {
+		audioElement.loop = event.target.checked;
+	});
+
 	let mouseLastUpdate = 0;
 	document.body.addEventListener('mousemove', event => {
 		mouseLastUpdate = Date.now();
