@@ -124,6 +124,22 @@ function initAudio() {
 	audioSourceNode.connect(audioAnalyser);
 	audioSourceNode.connect(audioContext.destination);
 
+	if ('mediaSession' in navigator) {
+		navigator.mediaSession.metadata = new MediaMetadata({
+			title: 'jingle',
+			artist: 'BDSU',
+			album: 'Best of Plenum',
+			artwork: [
+				{src: './bdsu-logo.png', sizes: '512x512', type: 'image/png'},
+			],
+		});
+
+		navigator.mediaSession.setActionHandler('play', () => audioElement.play());
+		navigator.mediaSession.setActionHandler('pause', () => audioElement.pause());
+		navigator.mediaSession.setActionHandler('previoustrack', () => audioElement.currentTime = 0);
+		navigator.mediaSession.setActionHandler('nexttrack', () => audioElement.currentTime = 0);
+	}
+
 	requestAnimationFrame(processVolume);
 }
 
