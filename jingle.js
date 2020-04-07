@@ -1,13 +1,13 @@
 let audioAnalyser;
 let audioContext;
 let audioElement;
-let logoElement;
+let logoElements;
 let fileInputElement;
 
 window.addEventListener('load', init);
 
 function init() {
-	logoElement = document.querySelector('.logo');
+	logoElements = document.querySelectorAll('.logo');
 
 	audioElement = document.querySelector('audio');
 	audioElement.addEventListener('play', initAudio);
@@ -107,8 +107,8 @@ function init() {
 	document.body.addEventListener('mousemove', event => {
 		mouseLastUpdate = Date.now();
 		document.body.classList.remove('idle');
-		logoElement.style.setProperty('--rotateX', 45 * (1 - 2 * event.pageY/document.body.offsetHeight));
-		logoElement.style.setProperty('--rotateY', 45 * (1 - 2 * event.pageX/document.body.offsetWidth));
+		setLogoProperty('--rotateX', 45 * (1 - 2 * event.pageY/document.body.offsetHeight));
+		setLogoProperty('--rotateY', 45 * (1 - 2 * event.pageX/document.body.offsetWidth));
 	});
 
 	setInterval(() => {
@@ -126,25 +126,29 @@ function init() {
 		document.body.classList.remove('idle');
 		document.body.classList.add('mobile');
 
-		logoElement.style.setProperty('--rotateX', event.beta);
-		logoElement.style.setProperty('--rotateY', event.gamma);
-		logoElement.style.setProperty('--rotateZ', event.alpha);
+		setLogoProperty('--rotateX', event.beta);
+		setLogoProperty('--rotateY', event.gamma);
+		setLogoProperty('--rotateZ', event.alpha);
 	});
 
 	if (window.screen && screen.orientation) {
 		screen.orientation.addEventListener('change', event => {
-			logoElement.style.setProperty('--screenOrientation', event.target.angle);
+			setLogoProperty('--screenOrientation', event.target.angle);
 		});
-		logoElement.style.setProperty('--screenOrientation', screen.orientation.angle);
+		setLogoProperty('--screenOrientation', screen.orientation.angle);
 	} else if ('orientation' in window){
 		window.onorientationchange = () => {
-			logoElement.style.setProperty('--screenOrientation', window.orientation);
+			setLogoProperty('--screenOrientation', window.orientation);
 		};
-		logoElement.style.setProperty('--screenOrientation', window.orientation);
+		setLogoProperty('--screenOrientation', window.orientation);
 	}
 
 	window.addEventListener('hashchange', updateFeatureClasses);
 	updateFeatureClasses();
+}
+
+function setLogoProperty(prop, value) {
+	logoElements.forEach(logo => logo.style.setProperty(prop, value));
 }
 
 function updateFeatureClasses() {
@@ -211,7 +215,7 @@ function processVolume() {
 		// enforce a minimal value of 0.01 to prevent overlapping artifacts
 		vol = Math.max(vol, 0.01);
 
-		logoElement.style.setProperty(`--${range.name}`, vol);
+		setLogoProperty(`--${range.name}`, vol);
 	});
 
 	requestAnimationFrame(processVolume);
