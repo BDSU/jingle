@@ -34,6 +34,16 @@ body {
 		rotateX(calc(var(--rotateX) *  1deg));
 }
 
+.mobile .logo {
+	--rotateZ: 0;
+	transform:
+		rotateY(calc(var(--rotateY) * -1deg))
+		rotateX(calc(var(--rotateX) *  1deg))
+		rotateZ(calc(var(--rotateZ) *  1deg))
+		rotateX(-90deg)
+		rotateY(90deg);
+}
+
 .idle .logo {
 	animation: wobble 30s 10s infinite ease-in-out alternate;
 	transform: rotateY(-10deg) rotateX(20deg) rotateZ(0);

@@ -93,6 +93,20 @@ function init() {
 		}
 	}, 1000);
 
+	window.addEventListener('deviceorientation', event => {
+		if (event.alpha === null) {
+			return;
+		}
+
+		mouseLastUpdate = Date.now();
+		document.body.classList.remove('idle');
+		document.body.classList.add('mobile');
+
+		logoElement.style.setProperty('--rotateX', event.beta);
+		logoElement.style.setProperty('--rotateY', event.gamma);
+		logoElement.style.setProperty('--rotateZ', event.alpha);
+	});
+
 	window.addEventListener('hashchange', updateFeatureClasses);
 	updateFeatureClasses();
 }
