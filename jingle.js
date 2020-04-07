@@ -73,11 +73,23 @@ function init() {
 				audioElement.pause();
 			}
 		}
+
+		if (event.key === 'f') {
+			if (document.fullscreenElement) {
+				document.exitFullscreen();
+			} else {
+				document.body.requestFullscreen();
+			}
+		}
 	});
 	// stop propagation when focus is on the audio controls
 	// otherwise pressing space could trigger the above toggle
 	// *and* play/pause via the controls
 	document.querySelector('.controls').addEventListener('keypress', event => event.stopPropagation());
+
+	document.body.addEventListener('click', event => document.body.requestFullscreen());
+	// stop propagation when clicking on controls, see above
+	document.querySelector('.controls').addEventListener('click', event => event.stopPropagation());
 
 	let mouseLastUpdate = 0;
 	document.body.addEventListener('mousemove', event => {
