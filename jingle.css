@@ -206,6 +206,12 @@ body:fullscreen {
 
 .text span {
 	transform: translateZ(calc(var(--vol-range) * var(--logo-scale) * var(--distance-factor) * var(--wave-factor)));
+	--shadow-width: calc(var(--logo-scale)/5);
+	text-shadow:
+		var(--shadow-width) var(--shadow-width) 0 #666,
+		calc(-1*var(--shadow-width)) var(--shadow-width) 0 #666,
+		var(--shadow-width) calc(-1*var(--shadow-width)) 0 #666,
+		calc(-1*var(--shadow-width)) calc(-1*var(--shadow-width)) 0 #666;
 }
 
 .text-shadow span {
