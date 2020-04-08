@@ -8,6 +8,12 @@
 		<title>BDSU</title>
 		<link rel="stylesheet" href="jingle.css">
 		<script src="jingle.js" charset="utf-8"></script>
+
+		<script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('service-worker.js');
+			}
+		</script>
 	</head>
 	<body>
 		<div class="logo-container left">
